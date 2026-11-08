@@ -10,6 +10,7 @@ proposal_evaluations/
 raw_responses/
 *.screenplay
 *.txt
+!requirements.txt
 *.jsonl
 
 # Local secrets and provider credentials
