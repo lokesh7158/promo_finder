@@ -1,0 +1,46 @@
+# Screenplays, private reports, and generated run data
+data/
+reports/
+outputs/
+artifacts/
+samples/generated/
+uploads/
+screenplays/
+proposal_evaluations/
+raw_responses/
+*.screenplay
+*.txt
+*.jsonl
+
+# Local secrets and provider credentials
+.env
+.env.*
+!.env.example
+.envrc
+.streamlit/secrets.toml
+api.txt
+*credentials*.json
+
+# Python environments, bytecode, and test/tool caches
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Local databases, logs, temporary files, and editor state
+*.sqlite3
+*.db
+*.log
+*.tmp
+*.temp
+*.pid
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
