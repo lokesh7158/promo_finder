@@ -6,8 +6,11 @@ Use Python 3.13 and Windows PowerShell from the repository root:
 
 ```powershell
 py -3.13 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
 ```
+
+For CLI stage commands and output details, see the [README CLI guide](README.md#b-cli-execution).
 
 ## 2. Run the synthetic demo
 
@@ -15,7 +18,7 @@ Demo mode is the default and does not require an API key:
 
 ```powershell
 Remove-Item Env:PROMOFINDER_MODE -ErrorAction SilentlyContinue
-.\.venv\Scripts\python.exe -m streamlit run app.py
+python -m streamlit run app.py
 ```
 
 Open the local URL printed by Streamlit. On **Upload & Run**, download the synthetic sample pack, upload unchanged `.txt` files from that pack, and click **Run pipeline**. Demo mode is synthetic-only and disables provider controls and live LLM evaluation.
@@ -25,9 +28,10 @@ Open the local URL printed by Streamlit. On **Upload & Run**, download the synth
 Generate one synthetic file, then launch local mode:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\generate_synthetic_samples.py --count 1
+python scripts\generate_synthetic_samples.py --count 1
+Remove-Item Env:PROMOFINDER_HOSTED -ErrorAction SilentlyContinue
 $env:PROMOFINDER_MODE = 'local'
-.\.venv\Scripts\python.exe -m streamlit run app.py
+python -m streamlit run app.py
 ```
 
 Upload the generated file from `samples/generated/` and click **Run pipeline**. This creates proposal inputs in a temporary workspace and makes no live LLM request.
@@ -48,7 +52,7 @@ Review current provider charges, quotas, and data-handling rules first. Do not p
 ## 5. Run offline tests
 
 ```powershell
-.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+python -m unittest discover -s tests -v
 ```
 
 The tests are synthetic and mock provider APIs; they do not make live requests.
