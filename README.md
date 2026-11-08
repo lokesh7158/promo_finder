@@ -74,7 +74,13 @@ The application reads this setting from `st.secrets` (and the process environmen
 
 Use the CLI when you want to run individual stages, inspect intermediate files, or automate an offline workflow. These are executable scripts; `src/evaluation/ranking.py` is an internal module, not a standalone CLI. Each command below uses the same Python environment installed above.
 
-Place authorized top-level `.txt` inputs in `data\input\episodes` (or set `$inputDir` to another directory). The parser writes JSON under `data\output`; keep inputs and outputs private. The following PowerShell sequence runs each available stage and then performs a safe proposal-evaluation dry run:
+Place authorized top-level `.txt` inputs in `data\input\episodes` (or set `$inputDir` to another directory). To exercise the CLI without external screenplay material, generate a synthetic input there:
+
+```powershell
+python scripts\generate_synthetic_samples.py --count 1 --output-dir data\input\episodes
+```
+
+The parser writes JSON under `data\output`; keep inputs and outputs private. The following PowerShell sequence runs each available stage and then performs a safe proposal-evaluation dry run:
 
 ```powershell
 $inputDir = 'data\input\episodes'
